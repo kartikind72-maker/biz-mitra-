@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#101827"><meta name="description" content="BizMitra — simple business management for customers, invoices, expenses and inventory.">
+<title>BizMitra — Business Manager</title><link rel="stylesheet" href="style.css">
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.119.2"></script>
+<script defer src="app.js"></script>
+</head>
+<body>
+<div id="toast" class="toast" role="status"></div>
+<section id="authScreen" class="auth-wrap">
+ <div class="auth-brand"><div class="brand-mark">B</div><div><b>BizMitra</b><small>Business, made simpler.</small></div></div>
+ <div class="auth-card"><div class="eyebrow">WELCOME TO BIZMITRA</div><h1 id="authTitle">Welcome back</h1><p class="muted" id="authSub">Sign in to manage your business from anywhere.</p>
+ <form id="authForm" class="stack">
+  <label id="nameField" class="hidden">Your name<input id="authName" autocomplete="name" placeholder="Business owner name"></label>
+  <label>Email address<input id="authEmail" type="email" required autocomplete="email" placeholder="you@example.com"></label>
+  <label>Password<input id="authPassword" type="password" required minlength="6" autocomplete="current-password" placeholder="At least 6 characters"></label>
+  <button class="btn primary full" id="authSubmit">Sign in</button>
+ </form>
+ <div class="auth-links"><button class="link-btn" id="toggleAuth">Create account</button><button class="link-btn" id="forgotBtn">Forgot password?</button></div>
+ <p class="tiny muted">Your business data is private to your signed-in account.</p>
+ </div><p class="auth-foot">© 2026 BizMitra | A Product of WAYD</p>
+</section>
+<div id="appShell" class="shell hidden">
+ <aside class="sidebar" id="sidebar"><div class="side-brand"><div class="brand-mark">B</div><div><b>BizMitra</b><small>Business suite</small></div></div>
+ <div class="workspace"><span class="dot"></span><span id="sideBusiness">My Business</span></div>
+ <nav id="nav">
+  <button class="nav-item active" data-page="dashboard"><span>▦</span>Overview</button>
+  <button class="nav-item" data-page="invoices"><span>▤</span>Invoices</button>
+  <button class="nav-item" data-page="customers"><span>♙</span>Customers</button>
+  <button class="nav-item" data-page="products"><span>◇</span>Products & services</button>
+  <button class="nav-item" data-page="inventory"><span>▥</span>Inventory</button>
+  <button class="nav-item" data-page="expenses"><span>↗</span>Expenses</button>
+  <button class="nav-item" data-page="reports"><span>▥</span>Reports & GST</button>
+  <button class="nav-item" data-page="plans"><span>✧</span>Plans</button>
+  <button class="nav-item" data-page="settings"><span>⚙</span>Business settings</button>
+ </nav>
+ <div class="sidebar-bottom"><div class="plan-mini"><span class="pill free" id="planBadge">FREE PLAN</span><p id="planMiniText">Simple tools to get started.</p><button class="btn small outline full" data-go="plans">Explore plans</button></div><button class="nav-item" id="signOut"><span>↪</span>Sign out</button></div></aside>
+ <main class="main"><header class="topbar"><button class="icon-btn mobile-only" id="menuBtn" aria-label="Menu">☰</button><div><div class="eyebrow" id="todayLabel">YOUR WORKSPACE</div><h2 id="pageTitle">Overview</h2></div><div class="top-actions"><button class="icon-btn" id="themeBtn" title="Toggle theme">◐</button><div class="avatar" id="userAvatar">U</div></div></header>
+ <div class="content" id="content"><div class="loading">Loading your workspace…</div></div>
+ <footer>© 2026 BizMitra | A Product of WAYD <span>Built for small businesses</span></footer></main>
+</div>
+<div id="modal" class="modal hidden"><div class="modal-backdrop" data-close="1"></div><div class="modal-panel"><div class="modal-head"><div><div class="eyebrow" id="modalEyebrow">BIZMITRA</div><h3 id="modalTitle">Add item</h3></div><button class="icon-btn" data-close="1">✕</button></div><div id="modalBody"></div></div></div>
+</body></html>
