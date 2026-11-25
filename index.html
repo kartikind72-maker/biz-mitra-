@@ -2,7 +2,8 @@
 <html lang="en">
 <head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<meta name="theme-color" content="#101827"><meta name="description" content="BizMitra — simple business management for customers, invoices, expenses and inventory.">
+<meta name="theme-color" content="#101827">
+<meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="default"><link rel="manifest" href="manifest.webmanifest"><link rel="icon" href="icons/icon-192.svg" type="image/svg+xml"><meta name="description" content="BizMitra — simple business management for customers, invoices, expenses and inventory.">
 <title>BizMitra — Business Manager</title><link rel="stylesheet" href="style.css">
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.119.2"></script>
 <script defer src="app.js"></script>
@@ -37,7 +38,7 @@
   <button class="nav-item" data-page="settings"><span>⚙</span>Business settings</button>
  </nav>
  <div class="sidebar-bottom"><div class="plan-mini"><span class="pill free" id="planBadge">FREE PLAN</span><p id="planMiniText">Simple tools to get started.</p><button class="btn small outline full" data-go="plans">Explore plans</button></div><button class="nav-item" id="signOut"><span>↪</span>Sign out</button></div></aside>
- <main class="main"><header class="topbar"><button class="icon-btn mobile-only" id="menuBtn" aria-label="Menu">☰</button><div><div class="eyebrow" id="todayLabel">YOUR WORKSPACE</div><h2 id="pageTitle">Overview</h2></div><div class="top-actions"><button class="icon-btn" id="themeBtn" title="Toggle theme">◐</button><div class="avatar" id="userAvatar">U</div></div></header>
+ <main class="main"><header class="topbar"><button class="icon-btn mobile-only" id="menuBtn" aria-label="Menu">☰</button><div><div class="eyebrow" id="todayLabel">YOUR WORKSPACE</div><h2 id="pageTitle">Overview</h2></div><div class="top-actions"><button class="btn secondary small" id="installBtn" hidden>Install app</button><button class="icon-btn" id="themeBtn" title="Toggle theme">◐</button><div class="avatar" id="userAvatar">U</div></div></header>
  <div class="content" id="content"><div class="loading">Loading your workspace…</div></div>
  <footer>© 2026 BizMitra | A Product of WAYD <span>Built for small businesses</span></footer></main>
 </div>

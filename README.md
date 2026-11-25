@@ -40,4 +40,21 @@ If signup appears to do nothing, open Supabase Dashboard → Authentication → 
 - Import restore replaces records in this signed-in workspace. Export a backup before restoring.
 
 ## Security
-Never add a Supabase `service_role` or secret key to this frontend. Keep RLS enabled. Each app row is filtered by `auth.uid()` through the existing owner policies. Do not share account passwords or authentication codes.
+Never add a Supabase `service_role` or secret key to this frontend. Keep RLS enabled. Each app row is filtered by `auth.uid()` through the existing owner policies. The connected project's security advisor currently reports leaked-password protection as disabled; enable it in Supabase Auth settings before public launch. Do not share account passwords or authentication codes.
+
+
+## Barcode + PWA update
+- Product records now include a barcode field (also accepts SKU).
+- Invoice creation supports camera scanning where the browser supports `BarcodeDetector`, and manual barcode/SKU entry as fallback. Repeated scans of a product increase its invoice quantity. Unknown codes can be used to create a product.
+- Install prompt, web manifest, app icons and service-worker app-shell caching are included. The app shell may open offline, but Supabase login and cloud data require an internet connection.
+
+### Database updates
+The connected BizMitra Supabase project already has the barcode column/index applied. It also has database-side Free-plan enforcement for invoice/customer/product limits, invoice template selection, and reminder channels. The subscription table is read-only to normal signed-in users; users cannot grant themselves Pro by editing their own plan.
+
+## Plan restrictions (implemented in the app)
+
+**Free**: up to 3 invoices per calendar month, 25 customers and 25 products/services; Classic invoice design only; manual reminders; no camera barcode scan or CSV/GST exports. Full JSON backup remains available on Free.
+
+**Pro Monthly / Pro Yearly / Lifetime**: unlimited invoices, customers and products; all 4 invoice designs; camera barcode scanning; invoice/expense CSV and GST-summary CSV exports; WhatsApp/email reminder preparation.
+
+The app checks these limits before the relevant actions and routes Free users to Plans & billing when a Pro feature is requested. The connected Supabase database also enforces invoice/customer/product caps, Classic-only invoices, and manual-only reminders for Free accounts. Pro status requires an active, non-expired subscription row; normal users have read-only access to subscriptions. Paid checkout is still not connected, so a user cannot activate Pro by clicking Request upgrade. Camera barcode scanning and CSV/GST exports are client-side Pro gates; the camera itself is not a database operation. A future verified payment webhook/admin workflow is required to activate paid subscriptions safely.
